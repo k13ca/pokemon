@@ -1,16 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jersey+10&family=Micro+5&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Tiny5&display=swap");
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Tiny5", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #000814;
+  background-color: #ffffff;
 }
 
 a {
@@ -23,46 +20,67 @@ a:hover {
 }
 
 body {
+  width: 100%;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  width: 100vw;
   min-height: 100vh;
+
+  --dark: #000814;
+  --light: #ffffff;
+  --jonquil: #fdcb0fff;
+  --blue: #2769b3ff;
+
+  cursor: grab;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30vh;
+  line-height: 0.7;
+}
+
+h2 {
+  font-family: "Tiny5";
+  font-size: 3vh;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: "Silkscreen";
+  font-size: 3vh;
+  text-transform: uppercase;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: transparent;
+  border-width: 10px;
+  border-color: var(--dark);
+  border: solid;
+  font-family: "Tiny5";
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 3vh;
+  box-shadow: 4px 4px 0 var(--dark), 8px 8px 0 var(--dark);
+  height: fit-content;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  background-color: transparent;
+  border-width: 10px;
+  border-color: var(--dark);
+  border: solid;
+  font-family: "Tiny5";
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 3vh;
+  box-shadow: 8px 8px 0 var(--dark), -8px 8px 0 var(--dark),
+    4px 4px 0 var(--dark), -4px 4px 0 var(--dark);
+  padding-inline: 10px;
+  height: fit-content;
 }
