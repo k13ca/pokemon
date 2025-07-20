@@ -134,7 +134,7 @@ h1.color-animation:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url("src/assets/frame.png") no-repeat center/contain;
+  background: url("/frame.png") no-repeat center/contain;
   padding: 12px;
   color: inherit;
   font-family: "Press Start 2P", sans-serif;
