@@ -49,8 +49,7 @@ h2 {
 
 h3 {
   font-family: "Silkscreen";
-  font-size: 3vh;
-  text-transform: uppercase;
+  font-size: 3vw;
 }
 
 button {
@@ -83,4 +82,14 @@ input {
     4px 4px 0 var(--dark), -4px 4px 0 var(--dark);
   padding-inline: 10px;
   height: fit-content;
+}
+
+@media (max-width: 767px) {
+  button {
+    font-size: 3vw;
+  }
+
+  input {
+    font-size: 3vw;
+  }
 }

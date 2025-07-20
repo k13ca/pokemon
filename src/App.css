@@ -82,7 +82,7 @@ h1.color-animation:hover {
   flex-direction: column;
   border: 10px solid var(--dark);
   justify-self: center;
-  max-width: 90vw;
+  max-width: 95vw;
   min-width: 40vw;
   height: 80vh;
   border-radius: 20px;
@@ -180,4 +180,22 @@ h1.color-animation:hover {
 .pad {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  form.flex-row.search-bar {
+    flex-wrap: wrap;
+  }
+  .pokedex-display {
+    margin-block: 10px;
+    border: 6px solid var(--dark);
+    width: 90vw;
+    justify-content: space-evenly;
+  }
+
+  .pokedex-content {
+    border: 4px dashed var(--dark);
+    margin: 2vh;
+    padding-bottom: 2vh;
+  }
 }
