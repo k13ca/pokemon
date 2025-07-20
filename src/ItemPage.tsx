@@ -199,7 +199,9 @@ export default function ItemPage() {
                             menuItems.map((item, i) => (
                                 <div
                                     key={item}
-                                    ref={el => menuRefs.current[i] = el}
+                                    ref={(el) => {
+                                        menuRefs.current[i] = el;
+                                    }}
                                     className="pokedex-option"
                                     style={{
                                         backgroundColor: i === cursor ? 'var(--blue)' : 'transparent',
