@@ -10,6 +10,7 @@ export default function Loading({ size = "200px" }: LoadingProps) {
     return (
         <div className="loading-wrapper">
             <img className="pokeball" src={pokeball} alt="Loading…" style={{ width: size, height: size }} />
+            <h2>Loading...</h2>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Console from './components/console';
 import Loading from './components/loading';
 import ErrorPage from './components/errorPage';
@@ -27,6 +27,20 @@ export default function ItemPage() {
     const [level, setLevel] = useState(0);
     const [cursor, setCursor] = useState(0);
     const [chosenStat, setChosenStat] = useState<string | null>(null);
+
+    const menuRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    useEffect(() => {
+        if (level !== 0) {
+            const activeEl = menuRefs.current[cursor];
+            if (activeEl) {
+                activeEl.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                });
+            }
+        }
+    }, [cursor, level]);
 
 
     useEffect(() => {
@@ -63,9 +77,9 @@ export default function ItemPage() {
     const onNext = () => navigate(`/pokemon/${nextId}`);
     const onPrev = () => prevId && navigate(`/pokemon/${prevId}`);
 
-    const mainMenu = ['options', 'prev', 'next'] as const;
+    const mainMenu = ['options', '<', '>'] as const;
     const optionsMenu = ['size', 'types', 'skills', 'stats'] as const;
-    const statsMenu = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed'] as const;
+    const statsMenu = ['hp', 'attack', 'defense', 's-attack', 'special-def', 'speed'] as const;
 
     const handleUp = () => {
         if (level === 0) return setCursor(0);
@@ -121,12 +135,11 @@ export default function ItemPage() {
 
     let content: React.ReactNode = null;
     if (level === 0) {
-        content = (
-            content = <p>Height: {detail.height} m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight: {detail.weight} kg</p>);
+        content = <p>Height: {detail.height} m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight: {detail.weight} kg</p>;
     } else if (level === 1) {
         const opt = optionsMenu[cursor];
         if (opt === 'size') {
-            content = <p>Height: {detail.height} m<br />Weight: {detail.weight} kg</p>;
+            content = <p>Height: {detail.height} m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight: {detail.weight} kg</p>;
         } else if (opt === 'types') {
             content = <p>Types: {detail.types.join(' • ')}</p>;
         } else if (opt === 'skills') {
@@ -157,17 +170,45 @@ export default function ItemPage() {
                     <div>{content}</div>
 
                     <div className="pokedex-options">
-                        {menuItems.map((item, i) => (
-                            <div
-                                key={item}
-                                className="pokedex-option"
-                                style={{
-                                    backgroundColor: i === cursor ? 'var(--blue)' : 'transparent',
-                                }}
-                            >
-                                <h2>{item}</h2>
-                            </div>
-                        ))}
+                        {level === 0 ? (
+                            <>
+                                <div
+                                    className="pokedex-option"
+                                    style={{
+                                        backgroundColor: cursor === 0 ? 'var(--blue)' : 'transparent',
+                                    }}
+                                >
+                                    <h2>{mainMenu[0].toUpperCase()}</h2>
+                                </div>
+
+                                <div style={{ display: "flex", width: "72%" }}>
+                                    {mainMenu.slice(1).map((item, i) => (
+                                        <div
+                                            key={item}
+                                            className="pokedex-option small"
+                                            style={{
+                                                backgroundColor: cursor === i + 1 ? 'var(--blue)' : 'transparent',
+                                            }}
+                                        >
+                                            <h2>{item.toUpperCase()}</h2>
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        ) : (
+                            menuItems.map((item, i) => (
+                                <div
+                                    key={item}
+                                    ref={el => menuRefs.current[i] = el}
+                                    className="pokedex-option"
+                                    style={{
+                                        backgroundColor: i === cursor ? 'var(--blue)' : 'transparent',
+                                    }}
+                                >
+                                    <h2>{item}</h2>
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
 
