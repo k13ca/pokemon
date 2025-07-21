@@ -31,13 +31,14 @@ body {
   --blue: #2769b3ff;
 
   cursor: grab;
+  box-sizing: border-box;
 }
 
 h1 {
   font-family: "Jersey 10", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 25vw;
+  font-size: 20vw;
   line-height: 0.7;
 }
 

@@ -82,10 +82,13 @@ h1.color-animation:hover {
   flex-direction: column;
   border: 10px solid var(--dark);
   justify-self: center;
-  max-width: 95vw;
-  min-width: 40vw;
-  height: 80vh;
+  aspect-ratio: 2 / 3;
+  height: 85vh;
   border-radius: 20px;
+}
+
+.pokedex-display h3 {
+  font-size: 3vh;
 }
 
 .pokedex-content {
@@ -97,6 +100,7 @@ h1.color-animation:hover {
   margin: 4vh;
   border-radius: 30px;
   padding-bottom: 3vh;
+  height: 65%;
 }
 
 .pokedex-options {
