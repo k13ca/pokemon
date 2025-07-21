@@ -38,13 +38,13 @@ h1 {
   font-family: "Jersey 10", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 20vw;
+  font-size: clamp(0px, 28vw, 30vh);
   line-height: 0.7;
 }
 
 h2 {
   font-family: "Tiny5";
-  font-size: 3vw;
+  font-size: clamp(0px, 3vw, 4vh);
   text-transform: uppercase;
 }
 
